@@ -1,12 +1,15 @@
-# jabong
+# Jabong Shopping Cart
+# Author : Sumit Singla
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+This project is based on AngularJS framework.All the dependencies required for this are present in bower_components folder.
 
-## Build & development
+# Functionality
+Edit Quantity
+Dynamic Price Calculation
+Remove Product
+Fully Responsive
+Video of Running Assignment (_video-assignment.mp4)
 
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+## Build Dependencies
+You must have Node and grunt installed globally on your system.
+Clone the repository from Github and run ‘ grunt serve --force ‘ for running application 
