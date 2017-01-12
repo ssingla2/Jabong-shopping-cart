@@ -1,0 +1,26 @@
+header{
+	position: fixed;
+    box-shadow: 0 0 4px rgba(0,0,0,.2);
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    background: #fff;
+    padding: 10px 20px;
+}
+.brand-logo{
+    margin: 0;
+    float: left;
+    background: url(../images/jabong_sprite.png) no-repeat -8px -285px;
+    width: 139px;
+    height: 36px;
+}
+
+.signIn {
+    	float:right;
+   a{
+		color:$primary-color;
+		text-transform:uppercase;
+		text-decoration:none;
+   }
+}

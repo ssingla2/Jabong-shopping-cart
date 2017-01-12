@@ -1,0 +1,136 @@
+<section class="shopping-cart" ng-controller="jabongCtrl as jc">
+
+<!-- Product details View -->
+   <div class="product-view col-lg-9 col-md-8 col-sm-12 clearfix">
+   <div class="shopping-cart-header row">
+      <span class="col-md-3 col-sm-4 col-xs-12 continue-shop hidden-display"><a href="javascript:void(0)">CONTINUE SHOPPING</a></span>
+      <div class="col-md-6 col-sm-4 col-xs-12 cart-item-details">YOUR SHOPPING BAG <span class="cart-count">[ 2 items ] </span></div>
+      <span class="col-md-3 col-sm-4 col-xs-12 delivery-info text-align"><a href="javascript:void(0)">CHECK DELIVERY INFO</a></span>
+   </div>
+   <div class="product-detail-header row hidden-display">
+      <span class="col-md-4 col-sm-4">PRODUCTS</span>
+      <span class="col-md-4 col-sm-4 product-delivery text-align">DELIVERY BY</span>
+      <span class="col-md-4 col-sm-4 text-align">TOTAL AMOUNT</span>
+   </div>
+   <div class="product-list">
+
+   <!-- Individual Loop to iterate products on UI -->
+   <section class="product-row clearfix" ng-repeat="product in jc.productData">
+      <div class="product-main">
+         <div class="product-image"><a href="javascript:void(0)"><img src="{{product.productImage}}" class="thumb loaded" alt="product 1"></a></div>
+         <div class="product-content">
+            <div class=" row product-inner-details">
+               <div class="col-md-8 col-sm-9 col-xs-12">
+                  <div class="heading">
+                     <div class="product-name">
+                        <a href="javascript:void(0)" class="product-heading">{{product.brandName}}</a>
+                        <a href="javascript:void(0)" class="product-desc text-capitalize">{{product.productName}}</a>
+                     </div>
+                     <div class="product-stock">
+                        <span>Size <small class="size">{{product.size}}</small></span><span class="separator">|</span><span>Qty <small class="qty">{{product.quantity}}</small></span><a href="javascript:void(0)" class="edit" data-option-selected="6" ng-click="product.editMode = true">EDIT</a>
+                     </div>
+                  </div>
+                  <div class="delivery" ng-show="!product.editMode"><span>Delivery by</span> {{product.deliveryDay}}, {{product.deliveryDate}}</div>
+               </div>
+               <div class="col-md-4 col-sm-3 col-xs-12 product-amount" ng-show="!product.editMode">
+                  <span class="strike">
+                  <span class="list-price">{{product.regPrice | currency:'&#8377;'}}</span>
+                  </span>
+                  <span class="price">
+                  <span class="list-price">{{product.discPrice | currency:'&#8377;'}}</span>
+                  </span>
+                  <span class="discount-price">({{product.discountPercent}}%)</span>
+               </div>
+               <!-- Edit Product View -->
+               <div class="edit-cart-sec clearfix" ng-show="product.editMode">
+                  <div class="col-md-3 col-sm-3 col-xs-12 select-qty">
+                     
+                        <select ng-model="product.newQty" class="form-control">
+                          <option ng-repeat="qty in product.availQty">{{qty}}</option>
+                        </select>
+                        <p class="error"></p>
+                     
+                  </div>
+                  <div class="col-md-9 col-sm-9 col-xs-12 save-cancel">
+                     <button type="button" class="btn btn-primary save-button" ng-click="jc.updatePrice($index, product.newQty)">SAVE</button><button type="button" class="btn btn-filled cancel-button" ng-click="product.editMode = false">CANCEL</button>
+                  </div>
+               </div>
+               <div class="row col-md-12 col-sm-12 col-xs-12 edit-section">
+                  <div class="save-for-later clearfix">
+                     <div class="off-edit-hide">
+                        <div class="sfl-link">
+                           <a href="javascript:void(0)" class="sfl-icon">
+                           <span></span>SAVE
+                           </a>
+                           <span class="separator">|</span>
+                           <a ng-click="jc.removeProduct($index)" href="javascript:void(0)" class="remove-icon">
+                           <span ></span>REMOVE
+                           </a>
+                           <div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+   </section>
+   </div>
+   </div>
+   <!-- Order Summary View -->
+   <div class="order-view col-lg-3 col-md-4 col-sm-12">
+     <div class="design-curl"></div>
+     <div class="amount-summary clearfix">
+        <div class="col-md-12 col-sm-6 col-xs-12 coupon-container">
+           <div class="apply-coupon">APPLY COUPONS</div>
+           </div>
+        
+        <div class="col-md-12 col-sm-6 col-xs-12 order-summary">
+        <div class="bill-amount">TOTAL &nbsp;
+          <div>
+            <span class="rupee">{{jc.totalPrice | currency:'&#8377;'}}</span>
+          </div>
+         </div>
+         <a class="btn btn-primary action-btn-orange place-order" href="javascript:void(0)"">PLACE ORDER</a>
+         <div class="order-heading">ORDER SUMMARY
+         <span class="accor-icon common-sprite open plus"></span>
+         </div>
+         <div class="detail-order-list">
+           <span class="left-view">Price</span>
+           <span class="right-view">
+              <span>{{jc.basePrice | currency:'&#8377;'}}</span>
+            </span>
+           <span class="left-view">Handling Charges</span>
+           <span class="right-view green" ng-if="jc.productDetails.handlingCost == 0">FREE</span>
+           <span class="right-view green" ng-if="jc.productDetails.handlingCost != 0">{{jc.productDetails.handling}}</span>
+           <span class="left-view">Estimated VAT/CST*
+           </span>
+            <span class="right-view">
+              <span>{{jc.productDetails.tax | currency:'&#8377;'}}</span>
+              </span>
+            <div class="payable-bill">
+              <span class="left-view">Total</span>
+              <span class="right-view">
+                <span>{{jc.totalPrice | currency:'&#8377;'}}</span> 
+              </span>
+            </div>
+            <div class="tax-details">
+              <span class="tax-info">*Part of the taxes payable to the government</span>
+            </div>
+            <div class="demonetisation-details">
+              <span class="demonetisation-info">All valid notes are accepted including newly launched Rs.500 and Rs.2000 notes.You can also opt for Card on Delivery, subject to availablity of card swipe machine. </span>
+            </div>                           
+         </div>
+      </div> 
+     </div></div>
+</section>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <title>Jabong Shopping Cart</title>
+    <meta name="description" content="Shopping Cart Products">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- External main.css -->
+    <link rel="stylesheet" href="styles/css/main.css">
+  </head>
+  <body ng-app="jabongApp"> 
+  <!--Header Banner -->
+<header id="shopping-header">
+  <div class="row">
+     <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <span id="back" class="back"></span>
+        <div class="brand-logo">
+          <a href="javascript:void(0)"></a>
+        </div>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10 hidden-display">
+        <div class="signIn">
+          <a href="javascript:void(0)">Sign In</a>
+        </div>
+      </div>
+      <div class="clear"></div>
+  </div>
+</header>  
+
+<!-- Main Container products and order view -->
+    <div class="container">
+      <div ng-view=""></div>
+    </div> 
+</body>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+</html>

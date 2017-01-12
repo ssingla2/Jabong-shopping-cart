@@ -1,0 +1,22 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	margin:30px 20px;
+}
+.container{
+	margin:0;
+	padding:0;
+	width:auto;
+	margin-top: 55px;
+}
+a{
+	&:hover,&:visited,&:active,&:link{
+		text-decoration:none; 
+	}
+}
+.clearfix{
+	clear:both;
+}
