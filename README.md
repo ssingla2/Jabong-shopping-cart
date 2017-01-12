@@ -5,9 +5,13 @@ This project is based on AngularJS framework.All the dependencies required for t
 
 # Functionality
 Edit Quantity
+
 Dynamic Price Calculation
+
 Remove Product
+
 Fully Responsive
+
 Video of Running Assignment (_video-assignment.mp4)
 
 ## Build Dependencies
